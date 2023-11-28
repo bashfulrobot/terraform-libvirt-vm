@@ -259,6 +259,10 @@ output_data = {
 
 MIT
 
-## Author Information
+## Original Credit
+
+- Forked from [MonolithProjects/terraform-libvirt-vm](https://github.com/MonolithProjects/terraform-libvirt-vm)
+
+### Author Information
 
 Created in 2020 by Michal Muransky
