@@ -1,4 +1,4 @@
-resource "libvirt_domain" "virt-machine" {
+resource "libvirt_domain" "data-virt-machine" {
   count  = var.vm_count
   name   = format("${var.vm_hostname_prefix}%02d", count.index + var.index_start)
   memory = var.memory
@@ -37,12 +37,16 @@ resource "libvirt_domain" "virt-machine" {
     volume_id = element(libvirt_volume.volume-qcow2[*].id, count.index)
   }
 
-  dynamic "disk" {
-    for_each = var.additional_disk_ids
-    content {
-      volume_id = disk.value
-    }
+  disk {
+    volume_id = element(libvirt_volume.addtional-volume-qcow2[*].id, count.index)
   }
+
+  # dynamic "disk" {
+  #   for_each = var.additional_disk_ids
+  #   content {
+  #     volume_id = disk.value
+  #   }
+  # }
 
   dynamic "filesystem" {
     for_each = var.share_filesystem.source != null ? [var.share_filesystem.source] : []

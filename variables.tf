@@ -22,7 +22,6 @@ variable "additional_disk_ids" {
   default     = []
 }
 
-
 variable "autostart" {
   description = "Autostart the domain"
   type        = bool
@@ -107,6 +106,12 @@ variable "system_volume" {
   description = "System Volume size (GB)"
   type        = number
   default     = 10
+}
+
+variable "data_volume" {
+  description = "Data Volume size (GB)"
+  type        = number
+  default     = 60
 }
 
 variable "share_filesystem" {
